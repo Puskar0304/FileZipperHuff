@@ -30,5 +30,8 @@ class huffman {
         }
     }
 
-    
+    void build() {
+        Node* a = heap.extractMin();
+        Node* b = heap.extractMin();
+    }
 };
