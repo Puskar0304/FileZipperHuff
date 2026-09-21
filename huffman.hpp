@@ -1,0 +1,34 @@
+#pragma once
+
+#include <bits/stdc++.h>
+#include "minHeap.hpp"
+
+class huffman {
+    unordered_map<char, int> mp;
+    string s;
+    minHeap heap;
+
+    void input() {
+        cout << "Enter the input: ";
+        cin >> s;
+    }
+
+    void count(string s) {
+        for (auto it : s) {
+            mp[it]++;
+        }
+    }    
+
+    void createNode() {
+        for (auto it : mp) {
+            Node* node = new Node;
+            node->c = it.first;
+            node->freq = it.second;
+            node->left = nullptr;
+            node->right = nullptr;
+            heap.insert(node);
+        }
+    }
+
+    
+};
