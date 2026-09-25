@@ -33,5 +33,16 @@ class huffman {
     void build() {
         Node* a = heap.extractMin();
         Node* b = heap.extractMin();
+        Node* parent = new Node;
+        parent -> freq = a -> freq + b -> freq;
+        parent -> left = a;
+        parent -> right = b;
+        heap.insert(parent);
+    }
+
+    void buildTree() {
+        while(heap.size() > 1) {
+            build();
+        }
     }
 };

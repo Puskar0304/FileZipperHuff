@@ -47,6 +47,10 @@ class minHeap {
         }
     }
     public:
+
+        int size() {
+            return arr.size();
+        }
     
         void insert(Node* n) {
             arr.push_back(n);
