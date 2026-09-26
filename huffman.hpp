@@ -5,6 +5,7 @@
 
 class huffman {
     unordered_map<char, int> mp;
+    unordered_map<char, string> codes;
     string s;
     minHeap heap;
 
@@ -45,4 +46,16 @@ class huffman {
             build();
         }
     }
+
+    void createTree(Node* root, string code) {
+        if (root == nullptr) {
+            return;
+        }
+        if (root -> left == nullptr && root -> right == nullptr) {
+            codes[root -> c] = code;
+        }
+        createTree(root -> left, code + "0");
+        createTree(root -> right, code + "1");
+    }
+
 };
