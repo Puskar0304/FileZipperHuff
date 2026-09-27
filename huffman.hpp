@@ -8,54 +8,69 @@ class huffman {
     unordered_map<char, string> codes;
     string s;
     minHeap heap;
+    Node* root = nullptr;
 
-    void input() {
-        cout << "Enter the input: ";
-        cin >> s;
-    }
-
-    void count(string s) {
-        for (auto it : s) {
-            mp[it]++;
+    public:
+        void input() {
+            cout << "Enter the input: ";
+            cin >> s;
         }
-    }    
 
-    void createNode() {
-        for (auto it : mp) {
-            Node* node = new Node;
-            node->c = it.first;
-            node->freq = it.second;
-            node->left = nullptr;
-            node->right = nullptr;
-            heap.insert(node);
-        }
-    }
+        void count() {
+            for (auto it : s) {
+                mp[it]++;
+            }
+        }    
 
-    void build() {
-        Node* a = heap.extractMin();
-        Node* b = heap.extractMin();
-        Node* parent = new Node;
-        parent -> freq = a -> freq + b -> freq;
-        parent -> left = a;
-        parent -> right = b;
-        heap.insert(parent);
-    }
+        void createNode() {
+            for (auto it : mp) {
+                Node* node = new Node;
+                node->c = it.first;
+                node->freq = it.second;
+                node->left = nullptr;
+                node->right = nullptr;
+                heap.insert(node);
+            }
+        }
 
-    void buildTree() {
-        while(heap.size() > 1) {
-            build();
+        void build() {
+            Node* a = heap.extractMin();
+            Node* b = heap.extractMin();
+            Node* parent = new Node;
+            parent -> freq = a -> freq + b -> freq;
+            parent -> left = a;
+            parent -> right = b;
+            heap.insert(parent);
         }
-    }
 
-    void createTree(Node* root, string code) {
-        if (root == nullptr) {
-            return;
+        void buildTree() {
+            while(heap.size() > 1) {
+                build();
+            }
         }
-        if (root -> left == nullptr && root -> right == nullptr) {
-            codes[root -> c] = code;
+
+        void createTree(Node* root, string code) {
+            if (root == nullptr) {
+                return;
+            }
+            if (root -> left == nullptr && root -> right == nullptr) {
+                codes[root -> c] = code;
+            }
+            createTree(root -> left, code + "0");
+            createTree(root -> right, code + "1");
         }
-        createTree(root -> left, code + "0");
-        createTree(root -> right, code + "1");
-    }
+        
+        void compress() {
+            input();
+            count();
+            createNode();
+            buildTree();
+            root = heap.getMin();
+            createTree(root, "");
+        }
+
+        unordered_map<char, string> getCode() {
+            return codes;
+        }
 
 };

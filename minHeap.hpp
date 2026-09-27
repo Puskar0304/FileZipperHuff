@@ -66,4 +66,8 @@ class minHeap {
             }
             return mini;
         }
+
+        Node* getMin() {
+            return arr[0];
+        }
 };
