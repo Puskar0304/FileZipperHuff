@@ -9,6 +9,7 @@ class huffman {
     string s;
     minHeap heap;
     Node* root = nullptr;
+    string netCode = "";
 
     public:
         void input() {
@@ -72,5 +73,11 @@ class huffman {
         unordered_map<char, string> getCode() {
             return codes;
         }
-
+        
+        string getString() {
+            for (auto it : s) {
+                netCode = netCode + codes[it];
+            }
+            return netCode;
+        }
 };

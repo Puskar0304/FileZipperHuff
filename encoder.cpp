@@ -7,5 +7,7 @@ int main() {
     for (auto it : mp) {
         cout << it.first << ": " << it.second << "\n";
     }
+    string ans = huff.getString();
+    cout << ans << endl;
     return 0;
-}
+} 
