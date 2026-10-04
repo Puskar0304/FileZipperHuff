@@ -7,5 +7,9 @@ int main() {
     for (auto it : mp) {
         cout << it.first << ": " << it.second << "\n";
     }
+    string encoded;
+    encoded = huff.getString();
+    cout << encoded << endl;
     return 0;
+
 } 

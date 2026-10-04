@@ -80,4 +80,12 @@ class huffman {
             }
             return netCode;
         }
+
+        Node* getRoot() {
+            return root;
+        }
+
+        string getInput() {
+            return s;
+        }
 };
