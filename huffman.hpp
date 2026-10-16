@@ -13,7 +13,7 @@ class huffman {
 
     public:
         void input() {
-            cout << "Enter the input: ";
+            cout << "Enter the file name: ";
             cin >> s;
         }
 
@@ -62,7 +62,6 @@ class huffman {
         }
         
         void compress() {
-            input();
             count();
             createNode();
             buildTree();
